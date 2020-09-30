@@ -5,10 +5,6 @@ const time = document.querySelector('img.time');
 const icon = document.querySelector('.icon img');
 
 const updateUI = (data) => {
-    console.log(data);
-    // const cityDetails = data.cityDetails;
-    // const weather = data.weather;    
-
     // destructure properties
     const { cityDetails, weather } = data;
 
@@ -21,6 +17,22 @@ const updateUI = (data) => {
             <span>&deg;C</span>
         </div>
     `;
+
+    // update night and day image & icons
+    // let timeSrc = null;
+    // if (weather.IsDayTime) {
+    //     timeSrc = 'img/day.svg'
+    // } else {
+    //     timeSrc = 'img/night.svg'
+    // }
+
+    // ternary operator
+    let timeSrc = weather.isDayTime ? 'img/day.svg' : 'img/night.svg';
+
+    time.setAttribute('src', timeSrc);
+
+    const iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
+    icon.setAttribute('src', iconSrc);
 
     // remove d-none class if present
     if (card.classList.contains('d-none')) {
